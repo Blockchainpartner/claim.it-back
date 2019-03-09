@@ -8,7 +8,10 @@ import (
 	"log"
 )
 
-var UserCollection mongo.Collection
+var (
+	ClaimCollection mongo.Collection
+	UserCollection  mongo.Collection
+)
 
 // initialize connection to the DB according to an environment variable
 // for the DB URI
@@ -32,6 +35,7 @@ func Init() {
 
 	/** PHASE 2: Init access to collections */
 	UserCollection = *db.Collection("user")
+	ClaimCollection = *db.Collection("claim")
 
 	/** PHASE 3: Init indexes */
 	// Unique key on userCollection
