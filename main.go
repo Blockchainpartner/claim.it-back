@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"github.com/Blockchainpartner/claim.it-back/server"
+)
 
 func main() {
-	fmt.Println("hello world")
+	// init and start server
+	server.Init()
 }

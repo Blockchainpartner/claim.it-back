@@ -1,0 +1,75 @@
+{
+	"ImportPath": "github.com/Blockchainpartner/claim.it",
+	"GoVersion": "go1.12",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/gin-contrib/sse",
+			"Rev": "5545eab6dad3bbbd6c5ae9186383c2a9d23c0dae"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.3.0-136-g70a0aba",
+			"Rev": "70a0aba3e423246be37462cfdaedd510c26c566e"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/binding",
+			"Comment": "v1.3.0-136-g70a0aba",
+			"Rev": "70a0aba3e423246be37462cfdaedd510c26c566e"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/internal/json",
+			"Comment": "v1.3.0-136-g70a0aba",
+			"Rev": "70a0aba3e423246be37462cfdaedd510c26c566e"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/render",
+			"Comment": "v1.3.0-136-g70a0aba",
+			"Rev": "70a0aba3e423246be37462cfdaedd510c26c566e"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Comment": "v1.3.0-2-gb5d812f",
+			"Rev": "b5d812f8a3706043e23a9cd5babf2e5423744d30"
+		},
+		{
+			"ImportPath": "github.com/json-iterator/go",
+			"Comment": "1.1.5-17-gf64ce68",
+			"Rev": "f64ce68b6eea7b957a0d0d43e224dfe491b0babe"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-isatty",
+			"Comment": "v0.0.6",
+			"Rev": "369ecd8cea9851e459abb67eb171853e3986591e"
+		},
+		{
+			"ImportPath": "github.com/modern-go/concurrent",
+			"Comment": "1.0.3",
+			"Rev": "bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94"
+		},
+		{
+			"ImportPath": "github.com/modern-go/reflect2",
+			"Comment": "v1.0.1",
+			"Rev": "94122c33edd36123c84d5368cfb2b69df93a0ec8"
+		},
+		{
+			"ImportPath": "github.com/ugorji/go/codec",
+			"Comment": "v1.1.2-2-ge444a50",
+			"Rev": "e444a5086c436778cf9281a7059a3d58b9e17935"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "584f3b12f43e1e55248c90e84804777009eed0a4"
+		},
+		{
+			"ImportPath": "gopkg.in/go-playground/validator.v8",
+			"Comment": "v8.18.2",
+			"Rev": "5f1438d3fca68893a817e4a66806cea46a9e4ebf"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Comment": "v2.2.2",
+			"Rev": "51d6538a90f86fe93ac480b35f37b2be17fef232"
+		}
+	]
+}

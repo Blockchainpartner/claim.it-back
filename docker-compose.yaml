@@ -4,8 +4,8 @@ services:
         build: .
         command: bash -c "go get github.com/pilu/fresh && fresh"
         volumes:
-            - .:/go/src/sunr
+            - .:/go/src/github.com/Blockchainpartner/claim.it-back
         ports:
-            - 8082:8082
+            - 8080:8080
         env_file:
             - ./env.list

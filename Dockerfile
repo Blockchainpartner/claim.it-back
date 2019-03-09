@@ -1,9 +1,9 @@
 FROM golang:1.12
 
 # Copy sources
-RUN mkdir /go/src/claim.it
-COPY . /go/src/claim.it
-WORKDIR /go/src/claim.it
+RUN mkdir -p /go/src/github.com/Blockchainpartner/claim.it-back
+COPY . /go/src/github.com/Blockchainpartner/claim.it-back
+WORKDIR /go/src/github.com/Blockchainpartner/claim.it-back
 
 # Run the project
 CMD ["go", "run", "main.go"]
