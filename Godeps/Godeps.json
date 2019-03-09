@@ -461,6 +461,11 @@
 			"Rev": "8b1b92947f46224e3b97bb1a3a5b0382be00d31e"
 		},
 		{
+			"ImportPath": "github.com/pusher/pusher-http-go",
+			"Comment": "v1.3.0-2-g75436b6",
+			"Rev": "75436b6240f7f9df1bb87dd9a0646dff4f4a0fea"
+		},
+		{
 			"ImportPath": "github.com/rjeczalik/notify",
 			"Comment": "v0.9.2-4-g629144b",
 			"Rev": "629144ba06a1c6af28c1e42c228e3d42594ce081"
@@ -533,7 +538,23 @@
 			"Rev": "73f8eece6fdcd902c185bf651de50f3828bed5ed"
 		},
 		{
+			"ImportPath": "golang.org/x/crypto/internal/subtle",
+			"Rev": "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/nacl/secretbox",
+			"Rev": "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
+		},
+		{
 			"ImportPath": "golang.org/x/crypto/pbkdf2",
+			"Rev": "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/poly1305",
+			"Rev": "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/salsa20/salsa",
 			"Rev": "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
 		},
 		{

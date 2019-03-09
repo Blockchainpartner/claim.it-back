@@ -13,6 +13,10 @@ docker-compose up
 * `ETH_NODE_URI`
 * `ETH_NODE_WS_URI`
 * `ETH_PRIVATE_KEY`
+* `PUSHER_APP_ID`
+* `PUSHER_APP_KEY`
+* `PUSHER_APP_SECRET`
+* `PUSHER_APP_CLUSTER`
 
 ## Routes
 

@@ -11,6 +11,10 @@ var (
 	EthNodeUri       string
 	EthNodeWSUri     string
 	HexEthPrivateKey string
+	PusherAppId      string
+	PusherAppKey     string
+	PusherAppSecret  string
+	PusherAppCluster string
 )
 
 func InitEnvironment() {
@@ -38,5 +42,25 @@ func InitEnvironment() {
 	HexEthPrivateKey, exists = os.LookupEnv("ETH_PRIVATE_KEY")
 	if !exists {
 		log.Fatal("ETH_PRIVATE_KEY environment variable not set")
+	}
+
+	PusherAppId, exists = os.LookupEnv("PUSHER_APP_ID")
+	if !exists {
+		log.Fatal("PUSHER_APP_ID environment variable not set")
+	}
+
+	PusherAppKey, exists = os.LookupEnv("PUSHER_APP_KEY")
+	if !exists {
+		log.Fatal("PUSHER_APP_KEY environment variable not set")
+	}
+
+	PusherAppSecret, exists = os.LookupEnv("PUSHER_APP_SECRET")
+	if !exists {
+		log.Fatal("PUSHER_APP_SECRET environment variable not set")
+	}
+
+	PusherAppCluster, exists = os.LookupEnv("PUSHER_APP_CLUSTER")
+	if !exists {
+		log.Fatal("PUSHER_APP_CLUSTER environment variable not set")
 	}
 }
