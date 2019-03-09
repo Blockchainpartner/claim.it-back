@@ -99,7 +99,6 @@ func GetClaim(claimFilter ClaimFilter) (*Claim, error) {
 
 func SearchClaims(rf RequestFilter) ([]ClaimFilter, error) {
 	// get filter
-	// TODO make filter on address case insensitive
 	filter := rf.Filter
 
 	// get find options

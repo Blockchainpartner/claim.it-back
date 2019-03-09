@@ -91,7 +91,6 @@ func GetUser(userFilter UserFilter) (*User, error) {
 
 func SearchUsers(rf RequestFilter) ([]UserFilter, error) {
 	// get filter
-	// TODO make filter on address case insensitive
 	filter := rf.Filter
 
 	// get find options
