@@ -27,6 +27,7 @@ func NewRouter() *gin.Engine {
 		userGroup.POST("/search/count", uc.CountUser)
 		userGroup.GET("/:id", uc.GetUser)
 		userGroup.PUT("/:id", uc.PutUser)
+		userGroup.DELETE("/:id", uc.DeleteUser)
 	}
 
 	claimGroup := router.Group("/claim")
@@ -37,6 +38,7 @@ func NewRouter() *gin.Engine {
 		claimGroup.POST("/search/count", uc.CountClaim)
 		claimGroup.GET("/:id", uc.GetClaim)
 		claimGroup.PUT("/:id", uc.PutClaim)
+		claimGroup.DELETE("/:id", uc.DeleteClaim)
 	}
 
 	return router

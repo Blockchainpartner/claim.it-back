@@ -110,6 +110,32 @@ func (uc ClaimController) PutClaim(c *gin.Context) {
 	returnClaimResponse(c, *claim.ID)
 }
 
+func (uc ClaimController) DeleteClaim(c *gin.Context) {
+	// get claim
+	contextClaimIdString := c.Param("txHash")
+	contextClaimId, err := objectid.FromHex(contextClaimIdString)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid claim id"})
+		return
+	}
+	claim, err := models.GetClaim(models.ClaimFilter{ID: &contextClaimId})
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid claim id"})
+		return
+	}
+
+	// delete from the DB
+	if err := claim.Delete(); err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to delete claim"})
+		return
+	}
+
+	// return
+	c.Status(http.StatusOK)
+	return
+}
+
 func (uc ClaimController) SearchClaim(c *gin.Context) {
 	// get filter fields from request parameter
 	var requestFilter models.RequestFilter

@@ -121,6 +121,32 @@ func (uc UserController) PutUser(c *gin.Context) {
 	returnUserResponse(c, *user.ID)
 }
 
+func (uc UserController) DeleteUser(c *gin.Context) {
+	// get user
+	contextUserIdString := c.Param("id")
+	contextUserId, err := objectid.FromHex(contextUserIdString)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid user id"})
+		return
+	}
+	user, err := models.GetUser(models.UserFilter{ID: &contextUserId})
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid user id"})
+		return
+	}
+
+	// delete from the DB
+	if err := user.Delete(); err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to update user"})
+		return
+	}
+
+	// return
+	c.Status(http.StatusOK)
+	return
+}
+
 func (uc UserController) SearchUser(c *gin.Context) {
 	// get filter fields from request parameter
 	var requestFilter models.RequestFilter
