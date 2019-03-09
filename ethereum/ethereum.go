@@ -35,5 +35,5 @@ func EthClientInit() {
 	}
 	Transactor = bind.NewKeyedTransactor(ethPrivateKey)
 	// force GasLimit
-	Transactor.GasLimit = 1e6
+	Transactor.GasLimit = 1e7
 }

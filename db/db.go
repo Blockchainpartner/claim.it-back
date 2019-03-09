@@ -3,7 +3,6 @@ package db
 import (
 	"context"
 	"github.com/Blockchainpartner/claim.it-back/util"
-	"github.com/mongodb/mongo-go-driver/bson"
 	"github.com/mongodb/mongo-go-driver/mongo"
 	"log"
 )
@@ -36,22 +35,4 @@ func Init() {
 	/** PHASE 2: Init access to collections */
 	UserCollection = *db.Collection("user")
 	ClaimCollection = *db.Collection("claim")
-
-	/** PHASE 3: Init indexes */
-	// Unique key on userCollection
-	userCollectionIndexView := UserCollection.Indexes()
-	_, err = userCollectionIndexView.CreateOne(
-		context.Background(),
-		mongo.IndexModel{
-			Keys: bson.NewDocument(
-				bson.EC.Int32("pseudonym", 1),
-			),
-			Options: mongo.NewIndexOptionsBuilder().
-				Unique(true).
-				Build(),
-		},
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
 }

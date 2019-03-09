@@ -1,12 +1,17 @@
 package controllers
 
 import (
+	"context"
+	"github.com/Blockchainpartner/claim.it-back/ethereum"
 	"github.com/Blockchainpartner/claim.it-back/models"
 	"github.com/Blockchainpartner/claim.it-back/util"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/mongodb/mongo-go-driver/bson/objectid"
 	"log"
+	"math/big"
 	"net/http"
+	"strings"
 )
 
 type UserController struct {
@@ -21,18 +26,60 @@ func (uc UserController) PostUser(c *gin.Context) {
 		return
 	}
 
-	// TODO deploy contracts @Thomas
+	// get action key
+	actionKeyString := userFilter.ActionKeyAddress
+	if actionKeyString == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid user"})
+		return
+	}
+	*actionKeyString = strings.TrimPrefix(*actionKeyString, "0x")
+	actionKey := common.HexToAddress(*actionKeyString)
+
+	// handle the nonce manually
+	nonce, err := ethereum.Client.PendingNonceAt(context.Background(), ethereum.Transactor.From)
+	if err != nil {
+		log.Println(err)
+		c.Status(http.StatusInternalServerError)
+		return
+	}
+	bigIntNonce := new(big.Int)
+
+	// deploy identity contract
+	bigIntNonce.SetUint64(nonce)
+	ethereum.Transactor.Nonce = bigIntNonce
+	identityAddress, _, _, err := ethereum.DeployIdentity(ethereum.Transactor, ethereum.Client, actionKey)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "invalid user"})
+		return
+	}
+
+	// manually increment the nonce
+	nonce++
+	bigIntNonce.SetUint64(nonce)
+	ethereum.Transactor.Nonce = bigIntNonce
+
+	// deploy claim holder contract
+	claimHolderAddress, _, _, err := ethereum.DeployClaimHolder(ethereum.Transactor, ethereum.Client, identityAddress)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "invalid user"})
+		return
+	}
 
 	// create new user object and force some fields.
 	// the Email field should be left empty for instance
 	userId := objectid.New()
+	identityAddressPtr := identityAddress.Hex()
+	claimHolderAddressPtr := claimHolderAddress.Hex()
 	user := models.User{
 		ID:                 &userId,
 		ActionKeyAddress:   userFilter.ActionKeyAddress,
 		ActionKeyPublicKey: userFilter.ActionKeyPublicKey,
 		Pseudonym:          userFilter.Pseudonym,
 		PictureUri:         userFilter.PictureUri,
-		// TODO add addresses @Thomas
+		ProxyAddress:       &identityAddressPtr,
+		ClaimHolderAddress: &claimHolderAddressPtr,
 	}
 
 	// post new user to the DB
