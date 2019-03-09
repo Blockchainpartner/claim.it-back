@@ -11,7 +11,7 @@ import (
 )
 
 type Claim struct {
-	ID            *objectid.ObjectID `json:"-" bson:"_id,omitempty"`
+	ID            *objectid.ObjectID `json:"id" bson:"_id,omitempty"`
 	TxHash        *string            `json:"txHash" bson:"txHash"`
 	ClaimId       *string            `json:"claimId" bson:"claimId"`
 	ParentClaimId *string            `json:"parentClaimId" bson:"parentClaimId"`
@@ -25,7 +25,7 @@ type Claim struct {
 }
 
 type ClaimFilter struct {
-	ID            *objectid.ObjectID `json:"-" bson:"_id,omitempty,omitempty"`
+	ID            *objectid.ObjectID `json:"id" bson:"_id,omitempty,omitempty"`
 	TxHash        *string            `json:"txHash,omitempty" bson:"txHash,omitempty"`
 	ClaimId       *string            `json:"claimId,omitempty" bson:"claimId,omitempty"`
 	ParentClaimId *string            `json:"parentClaimId,omitempty" bson:"parentClaimId,omitempty"`

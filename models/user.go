@@ -11,7 +11,7 @@ import (
 )
 
 type User struct {
-	ID                 *objectid.ObjectID `json:"-" bson:"_id,omitempty"`
+	ID                 *objectid.ObjectID `json:"id" bson:"_id,omitempty"`
 	ProxyAddress       *string            `json:"proxyAddress" bson:"proxyAddress"`
 	ActionKeyAddress   *string            `json:"actionKeyAddress" bson:"actionKeyAddress"`
 	ActionKeyPublicKey *string            `json:"actionKeyPublicKey" bson:"actionKeyPublicKey"`
@@ -21,7 +21,7 @@ type User struct {
 }
 
 type UserFilter struct {
-	ID                 *objectid.ObjectID `json:"-" bson:"_id,omitempty"`
+	ID                 *objectid.ObjectID `json:"id" bson:"_id,omitempty"`
 	ProxyAddress       *string            `json:"proxyAddress,omitempty" bson:"proxyAddress,omitempty"`
 	ActionKeyAddress   *string            `json:"actionKeyAddress,omitempty" bson:"actionKeyAddress,omitempty"`
 	ActionKeyPublicKey *string            `json:"actionKeyPublicKey,omitempty" bson:"actionKeyPublicKey,omitempty"`
