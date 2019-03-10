@@ -22,6 +22,7 @@ type Claim struct {
 	Recipient     *string            `json:"recipient" bson:"recipient"`
 	Data          *string            `json:"data" bson:"data"`
 	DataHash      *string            `json:"dataHash" bson:"dataHash"`
+	Date          *int64             `json:"date" bson:"date"`
 }
 
 type ClaimFilter struct {
@@ -36,6 +37,7 @@ type ClaimFilter struct {
 	Recipient     *string            `json:"recipient,omitempty" bson:"recipient,omitempty"`
 	Data          *string            `json:"data,omitempty" bson:"data,omitempty"`
 	DataHash      *string            `json:"dataHash,omitempty" bson:"dataHash,omitempty"`
+	Date          *int64             `json:"date,omitempty" bson:"date,omitempty"`
 }
 
 type ClaimUpdate map[string]ClaimFilter

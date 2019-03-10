@@ -6,6 +6,7 @@ import (
 	"github.com/mongodb/mongo-go-driver/bson/objectid"
 	"log"
 	"net/http"
+	"time"
 )
 
 type ClaimController struct {
@@ -27,6 +28,7 @@ func (uc ClaimController) PostClaim(c *gin.Context) {
 	claimId := objectid.New()
 	truePtr := true
 	falsePtr := false
+	now := time.Now().Unix()
 	claim := models.Claim{
 		ID:            &claimId,
 		ClaimId:       claimFilter.ClaimId,
@@ -38,7 +40,7 @@ func (uc ClaimController) PostClaim(c *gin.Context) {
 		Recipient:     claimFilter.Recipient,
 		Data:          claimFilter.Data,
 		DataHash:      claimFilter.DataHash,
-		// TODO TX related fields @Thomas
+		Date:          &now, // TODO use timestamp from the block at mining instead
 	}
 
 	// post new claim to the DB
