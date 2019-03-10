@@ -2,6 +2,7 @@ package server
 
 import (
 	"github.com/Blockchainpartner/claim.it-back/controllers"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,6 +12,15 @@ func NewRouter() *gin.Engine {
 	router := gin.New()
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
+
+	// set-up CORS policy
+	// default policy allows all origins
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowMethods:     []string{"PUT", "GET", "POST", "OPTIONS", "DELETE"},
+		AllowHeaders:     []string{"Accept", "Content-Type", "Authorization", "User"},
+		AllowCredentials: true,
+	}))
 
 	// declare endpoints
 	utilGroup := router.Group("/util")
